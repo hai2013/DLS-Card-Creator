@@ -1,0 +1,458 @@
+@font-face {
+	font-family: 'Geometos';
+	src: url('assets/Renogare-Regular.woff') format('woff'), url('assets/Renogare-Regular.woff2') format('woff2');
+}
+
+.card {
+	position: absolute;
+}
+
+.topLeft {
+	top: 21px;
+	left: 0px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 295px 458px 0 0;
+	border-color: #e0c059 transparent transparent transparent;
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.bottomRight {
+	top: 21px;
+	left: 0px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 0 295px 458px;
+	border-color: transparent transparent #edd665 transparent;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nameRect {
+	top: 259px;
+	left: 4px;
+	background: #1d2234;
+	width: 252px;
+	height: 53px;
+}
+
+.ratingCircle {
+	top: 0px;
+	left: 181px;
+	background: #edd865;
+	border-radius: 50%;
+	width: 82px;
+	height: 82px;
+}
+
+.ratingCircle2 {
+	top: 4px;
+	left: 185px;
+	background: #e0c559;
+	border-radius: 50%;
+	width: 74px;
+	height: 74px;
+}
+
+.ratingCircle3 {
+	top: 10px;
+	left: 192px;
+	background: #62d041;
+	border-radius: 50%;
+	width: 62px;
+	height: 62px;
+}
+
+.positionRect {
+	top: 87px;
+	left: 202px;
+	background: #b9e35e;
+	width: 46px;
+	height: 29px;
+}
+
+.rect {
+	top: 25px;
+	left: 198px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 54px;
+	height: 232px;
+}
+
+/**
+.rect2 {
+	top: 25px;
+	left: 256px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 198px;
+	height: 45px;
+}
+
+.rect3 {
+	top: 259px;
+	left: 256px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 198px;
+	height: 53px;
+}
+**/
+
+.statsRect1 {
+	top: 72px;
+	left: 256px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 45px;
+}
+
+.statsRect2 {
+	top: 119px;
+	left: 256px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 45px;
+}
+
+.statsRect3 {
+	top: 166px;
+	left: 256px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 45px;
+}
+
+.statsRect4 {
+	top: 213px;
+	left: 256px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 44px;
+}
+
+.statsRect5 {
+	top: 72px;
+	left: 353px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 45px;
+}
+
+.statsRect6 {
+	top: 119px;
+	left: 353px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 45px;
+}
+
+.statsRect7 {
+	top: 166px;
+	left: 353px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 45px;
+}
+
+.statsRect8 {
+	top: 213px;
+	left: 353px;
+	background: #1d2234;
+	opacity: 10%;
+	width: 59px;
+	height: 44px;
+}
+
+.statsRectData1 {
+	top: 72px;
+	left: 313px;
+	background: #1d2234;
+	width: 40px;
+	height: 45px;
+}
+
+.statsRectData2 {
+	top: 119px;
+	left: 313px;
+	background: #1d2234;
+	width: 40px;
+	height: 45px;
+}
+
+.statsRectData3 {
+	top: 166px;
+	left: 313px;
+	background: #1d2234;
+	width: 40px;
+	height: 45px;
+}
+
+.statsRectData4 {
+	top: 213px;
+	left: 313px;
+	background: #1d2234;
+	width: 40px;
+	height: 44px;
+}
+
+.statsRectData5 {
+	top: 72px;
+	left: 412px;
+	background: #1d2234;
+	width: 40px;
+	height: 45px;
+}
+
+.statsRectData6 {
+	top: 119px;
+	left: 412px;
+	background: #1d2234;
+	width: 40px;
+	height: 45px;
+}
+
+.statsRectData7 {
+	top: 166px;
+	left: 412px;
+	background: #1d2234;
+	width: 40px;
+	height: 45px;
+}
+
+.statsRectData8 {
+	top: 213px;
+	left: 412px;
+	background: #1d2234;
+	width: 40px;
+	height: 44px;
+}
+
+.playerImage {
+	top: 32px;
+	left: 16px;
+	width: 224px;
+	height: 224px;
+}
+
+.cardText {
+	font-weight: lighter;
+	width: 100%;
+	margin-left: -50%;
+	position: absolute;
+}
+
+.rating {
+	color: #1d2234;
+	left: 223px;
+	top: 22px;
+	font-size: 29px;
+}
+
+.position {
+	color: #1d2234;
+	left: 225px;
+	top: 86px;
+	font-size: 23px;
+}
+
+.firstName {
+	color: #787b85;
+	left: 130px;
+	top: 259px;
+	font-size: 17px;
+}
+
+.lastName {
+	letter-spacing: 1px;
+	color: #ffffff;
+	left: 130px;
+	top: 277px;
+	font-size: 23px;
+}
+
+.statsText {
+	font-size: 22px;
+}
+
+.stats1 {
+	color: #1d2234;
+	left: 284px;
+	top: 79px;
+}
+
+.stats2 {
+	color: #1d2234;
+	left: 284px;
+	top: 127px;
+}
+
+.stats3 {
+	color: #1d2234;
+	left: 284px;
+	top: 174px;
+}
+
+.stats4 {
+	color: #1d2234;
+	left: 284px;
+	top: 221px;
+}
+
+.stats5 {
+	color: #1d2234;
+	left: 383px;
+	top: 79px;
+}
+
+.stats6 {
+	color: #1d2234;
+	left: 383px;
+	top: 127px;
+}
+
+.stats7 {
+	color: #1d2234;
+	left: 383px;
+	top: 174px;
+}
+
+.stats8 {
+	color: #1d2234;
+	left: 383px;
+	top: 221px;
+}
+
+.statsData1 {
+	color: #5fca3d;
+	left: 333px;
+	top: 79px;
+}
+
+.statsData2 {
+	color: #5fca3d;
+	left: 333px;
+	top: 127px;
+}
+
+.statsData3 {
+	color: #5fca3d;
+	left: 333px;
+	top: 174px;
+}
+
+.statsData4 {
+	color: #eadc4c;
+	left: 333px;
+	top: 221px;
+}
+
+.statsData5 {
+	color: #5fca3d;
+	left: 432px;
+	top: 79px;
+}
+
+.statsData6 {
+	color: #5fca3d;
+	left: 432px;
+	top: 127px;
+}
+
+.statsData7 {
+	color: #eadc4c;
+	left: 432px;
+	top: 174px;
+}
+
+.statsData8 {
+	color: #e08835;
+	left: 432px;
+	top: 221px;
+}
+
+.preview {
+	left: 50%;
+	margin-left: -229px;
+	width: 458px;
+	height: 316px;
+	padding: 15px;
+	position: relative;
+}
+
+.settings {
+	padding: 10px;
+	position: relative;
+}
+
+header {
+	padding: 25px;
+	color: #ffffff;
+	letter-spacing: 1px;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+body, html {
+	margin: 0;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	height: 100%;
+	background-color: #dddddd;
+	text-align: center;
+	font-family: 'Geometos';
+}
+
+h1 {
+	margin: 0;
+}
+
+main {
+	padding: 20px;
+	background-image: url('assets/bg.png');
+	background-position: center;
+	background-size: cover;
+}
+
+select, input {
+	background: #ffffff;
+	border: none;
+	border-radius: 2.5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	font-size: 15px;
+	font-family: 'Geometos';
+	font-weight: lighter;
+	margin: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+	opacity: 1;
+}
+
+.logo {
+	position: relative;
+	padding: 5px;
+	width: 40px;
+	height: 40px;
+}
+
+footer {
+	color: #ffffff;
+	background-color: #3a3e61;
+	padding: 10px;
+}
+
+.footerLink {
+	text-decoration: none;
+}
