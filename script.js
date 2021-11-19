@@ -1,147 +1,167 @@
-function openDialog() {
-	document.getElementById('fileUpload').click();
-}
+var uploaded = '';
 
-function loadFile(event) {
-	var image = document.getElementById('playerImage');
-	image.src = URL.createObjectURL(event.target.files[0]);
-}
+function value(el) {
+    return document.getElementById(el).value;
+};
 
-function loadImageID() {
-	var select = document.getElementById('playerImageID');
-	var ID = ['Upload Image', 1, 9, 12, 17, 19, 30, 33, 35, 37, 53, 74, 91, 97, 138, 147, 149, 150, 152, 153, 165, 166, 168, 173, 176, 182, 187, 207, 214, 222, 233, 254, 258, 275, 325, 327, 328, 368, 369, 370, 372, 382, 386, 392, 406, 408, 414, 422, 447, 448, 452, 456, 506, 510, 512, 514, 515, 520, 524, 543, 545, 548, 563, 582, 662, 673, 772, 776, 786, 898, 919, 1023, 1026, 1035, 1052, 1079, 1109, 1123, 1133, 1148, 1155, 1157, 1167, 1170, 1216, 1224, 1229, 1233, 1244, 1251, 1261, 1275, 1276, 1424, 1490, 1492, 1497, 1498, 1551, 1728, 1732, 1735, 1787, 1866, 1873, 1892, 1902, 1929, 1944, 1972, 2178, 2184, 2193, 2201, 2210, 2258, 2287, 2313, 2335, 2344, 2347, 2354, 2360, 2364, 2382, 2384, 2386, 2406, 2409, 2413, 2451, 2452, 2469, 2471, 2494, 2505, 2509, 2517, 2559, 2563, 2566, 2567, 2591, 2592, 2594, 2599, 2602, 2641, 2651, 2663, 2692, 2700, 2705, 2727, 2746, 2773, 2796, 2830, 2842, 2899, 2921, 2938, 2962, 3120, 3128, 3179, 3288, 3361, 3385, 3386, 3403, 3432, 3465, 3549, 3596, 3603, 3624, 3636, 3642, 3648, 3659, 3663, 3665, 3673, 3703, 3715, 3737, 3745, 3759, 3799, 3811, 3850, 3854, 3867, 3874, 3880, 3881, 3882, 3887, 3894, 3983, 4011, 4016, 4020, 4031, 4039, 4050, 4053, 4054, 4057, 4061, 4066, 4079, 4083, 4090, 4095, 4103, 4117, 4120, 4177, 4203, 4224, 4228, 4229, 4231, 4237, 4241, 4243, 4257, 4262, 4264, 4267, 4278, 4287, 4288, 4298, 4328, 4334, 4352, 4354, 4391, 4407, 4410, 4444, 4461, 4463, 4466, 4476, 4484, 4491, 4492, 4493, 4505, 4509, 4518, 4535, 4556, 4600, 4608, 4622, 4627, 4648, 4683, 4686, 4690, 4697, 4704, 4711, 4712, 4721, 4724, 4736, 4739, 4764, 4796, 4806, 4882, 5018, 5028, 5033, 5041, 5052, 5055, 5056, 5084, 5108, 5116, 5130, 5145, 5156, 5169, 5215, 5264, 5282, 5296, 5300, 5303, 5306, 5307, 5309, 5314, 5332, 5333, 5337, 5338, 5347, 5356, 5366, 5379, 5383, 5384, 5388, 5389, 5391, 5394, 5398, 5403, 5427, 5428, 5436, 5440, 5471, 5478, 5484, 5486, 5487, 5489, 5499, 5506, 5512, 5536, 5906, 5917, 5918, 5925, 5936, 5954, 5963, 5965, 5970, 5987, 5996, 5998, 6002, 6017, 6018, 6052, 6113, 6125, 6127, 6230, 6239, 6240, 6242, 6251, 6284, 6287, 6370, 6376, 6422, 6431, 6434, 6449, 6464, 6480, 6496, 6499, 6505, 6515, 6551, 6554, 6561, 6567, 6571, 6573, 6576, 6665, 6668, 6674, 6675, 6683, 6687, 6703, 6704, 6708, 6715, 6721, 6731, 6735, 6739, 6747, 6785, 6794, 6841, 6844, 6846, 6869, 6874, 6878, 6884, 6893, 6894, 6913, 6916, 6921, 6930, 6943, 6945, 6962, 6977, 6990, 6991, 6993, 7047, 7049, 7052, 7053, 7067, 7072, 7075, 7076, 7080, 7093, 7106, 7138, 7152, 7162, 7170, 7206, 7207, 7209, 7213, 7214, 7218, 7253, 7271, 7272, 7274, 7278, 7293, 7297, 7307, 7321, 7333, 7345, 7347, 7349, 7360, 7362, 7368, 7372, 7379, 7382, 7387, 7392, 7394, 7400, 7402, 7404, 7413, 7415, 7431, 7435, 7441, 7449, 7455, 7456, 7458, 7462, 7467, 7468, 7469, 7481, 7494, 7505, 7525, 7541, 7542, 7553, 7554, 7558, 7592, 7595, 7604, 7609, 7647, 7668, 7669, 7671, 7704, 7710, 7741, 7760, 7764, 7767, 7768, 7801, 7805, 7821, 7822, 7823, 7840, 7846, 7851, 7853, 7855, 7856, 7858, 7885, 7911, 7932, 7933, 7935, 7957, 7979, 7981, 7986, 7990, 7994, 8003, 8005, 8008, 8009, 8019, 8024, 8027, 8037, 8042, 8048, 8128, 9127, 9131, 9136, 9225, 9291, 9299, 9368, 9429, 9443, 9447, 9454, 9460, 9461, 9462, 9467, 9480, 9482, 9483, 9487, 9496, 9501, 9508, 9512, 9518, 9522, 9524, 9526, 9536, 9544, 9548, 9553, 9562, 9566, 9569, 9572, 9574, 9575, 9576, 9580, 9583, 9584, 9587, 9592, 9599, 9605, 9610, 9612, 9613, 9619, 9627, 9632, 10047, 10048, 10074, 10093, 10094, 10097, 10115, 10119, 10120, 10155, 10159, 10162, 10173, 10174, 10176, 10197, 10200, 10204, 10208, 10210, 10212, 10215, 10216, 10237, 10244, 10261, 10280, 10297, 10321, 10324, 10332, 10339, 10344, 10356, 10357, 10366, 10372, 10377, 10379, 10398, 10399, 10400, 10403, 10408, 10409, 10412, 10414, 10430, 10433, 10448, 10452, 10464, 10615, 10620, 10627, 10629, 10636, 10678, 10695, 10721, 10728, 10732, 10747, 10753, 10765, 10766, 10767, 10772, 10806, 10808, 10810, 10811, 10812, 10822, 10839, 10864, 10883, 10946, 10947, 10958, 10959, 10975, 11038, 11040, 11041, 11061, 11063, 11064, 11065, 11067, 11071, 11082, 11084, 11093, 11095, 11097, 11102, 11103, 11104, 11107, 11113, 11114, 11140, 11142, 11148, 11151, 11157, 11162, 11166, 11167, 11168, 11169, 11239, 11256, 11276, 11303, 11304, 11314, 11337, 11346, 11347, 11359, 11364, 11365, 11367, 11379, 11397, 11438, 11468, 11469, 11473, 11475, 11499, 11519, 11520, 11523, 11524, 11526, 11532, 11535, 11542, 11547, 11550, 11559, 11562, 11567, 11570, 11575, 11580, 11588, 11589, 11604, 11610, 11621, 11623, 11626, 11633, 11636, 11637, 11638, 11640, 11652, 11654, 11655, 11667, 11675, 11683, 11686, 11692, 11704, 11708, 11714, 11717, 11720, 11734, 11738, 11755, 11757, 11790, 11795, 11796, 11823, 11830, 11848, 11850, 11851, 11852, 11854, 11876, 11878, 11882, 11891, 11894, 11908, 11917, 11934, 11958, 11970, 11980, 11986, 12027, 12029, 12047, 12052, 12053, 12059, 12072, 12148, 12172, 12179, 12194, 12200, 12201, 12203, 12224, 12225, 12226, 12262, 12299, 12324, 12326, 12334, 12336, 12338, 12342, 12344, 12349, 12353, 12370, 12372, 12374, 12375, 12376, 12377, 12381, 12382, 12383, 12384, 12385, 12387, 12389, 12394, 12395, 12404, 12407, 12411, 12412, 12421, 12426, 12428, 12429, 12434, 12439, 12446, 12455, 12457, 12464, 12465, 12479, 12480, 12481, 12485, 12489, 12492, 12496, 12497, 12499, 12580, 12581, 12582, 12584, 12593, 12599, 12600, 12602, 12603, 12605, 12608, 12612, 12631, 12632, 12643, 12644, 12645, 12648, 12657, 12659, 12666, 12669, 12670, 12671, 12672, 12677, 12682, 12684, 12693, 12695, 12696, 12699, 12700, 12701, 12707, 12709, 12713, 12716, 12718, 12728, 12735, 12738, 12744, 12748, 12751, 12752, 12753, 12755, 12757, 12758, 12761, 12767, 12778, 12779, 12780, 12789, 12790, 12791, 12793, 12796, 12806, 12816, 12817, 12824, 12833, 12835, 12841, 12842, 12844, 12847, 12849, 12855, 12861, 12879, 12893, 12904, 12905, 12918, 12927, 12943, 12946, 12947, 12959, 12968, 12969, 12970, 12972, 12973, 12979, 12984, 12992, 13001, 13004, 13005, 13009, 13024, 13027, 13040, 13041, 13043, 13066, 13068, 13073, 13083, 13093, 13096, 13097, 13099, 13102, 13126, 13130, 13147, 13180, 13183, 13184, 13185, 13186, 13193, 13197, 13251, 13297, 13304, 13305, 13307, 13309, 13354, 13355, 13357, 13693, 13710, 13717, 13718, 13722, 13726, 13728, 13729, 13731, 13732, 13742, 13743, 13744, 13747, 13753, 13756, 13759, 13762, 13764, 13768, 13773, 13775, 13777, 13778, 13779, 13784, 13800, 13802, 13803, 13805, 13806, 13807, 13811, 13812, 13814, 13816, 13817, 13821, 13823, 13829, 13845, 13849, 13851, 13854, 13855, 13864, 13867, 13868, 13871, 13872, 13877, 13886, 13897, 13901, 13912, 13914, 13926, 13927, 13934, 13938, 13939, 13942, 13948, 13949, 13950, 13953, 13954, 13957, 13959, 13963, 13965, 13979, 13980, 13981, 13983, 13996, 13999, 14008, 14009, 14010, 14011, 14033, 14034, 14036, 14038, 14039, 14041, 14049, 14053, 14058, 14060, 14061, 14062, 14064, 14065, 14066, 14067, 14078, 14082, 14099, 14100, 14123, 14124, 14126, 14129, 14132, 14139, 14141, 14143, 14153, 14165, 14183, 14184, 14190, 14197, 14199, 14201, 14204, 14205, 14209, 14222, 14225, 14229, 14233, 14236, 14239, 14241, 14255, 14262, 14275, 14284, 14304, 14309, 14315, 14318, 14320, 14324, 14325, 14326, 14327, 14334, 14335, 14342, 14344, 14346, 14347, 14349, 14355, 14361, 14363, 14366, 14370, 14371, 14382, 14389, 14390, 14397, 14401, 14402, 14403, 14410, 14411, 14413, 14448, 14480, 14482, 14484, 14487, 14488, 14498, 14505, 14509, 14522, 14525, 14558, 14559, 14607, 14609, 14634, 14638, 14639, 14640, 14647, 14649, 14650, 14652, 14653, 14673, 14674, 14676, 14683, 14709, 14715, 14723, 14727, 14730, 14733, 14734, 14738, 14739, 14742, 14754, 14755, 14756, 14774, 14775, 14776, 14784, 14794, 14805, 14806, 14814, 14816, 14817, 14819, 14825, 14838, 14851, 14854, 14868, 14871, 14872, 14876, 14877, 14880, 14881, 14883, 14885, 14890, 14892, 14895, 14896, 14898, 14899, 14900, 14902, 14907, 14909, 14916, 14918, 14920, 14928, 14930, 14938, 14939, 14943, 14944, 14950, 14951, 14952, 14953, 14955, 14956, 14957, 14961, 14962, 14965, 14966, 14967, 14969, 14975, 14977, 14981, 14982, 15033, 15040, 15043, 15045, 15046, 15047, 15082, 15083, 15089, 15091, 15093, 15095, 15097, 15103, 15112, 15124, 15125, 15128, 15130, 15133, 15134, 15137, 15139, 15140, 15148, 15160, 15162, 15163, 15180, 15183, 15185, 15189, 15193, 15195, 15199, 15210, 15212, 15220, 15222, 15223, 15225, 15226, 15227, 15228, 15229, 15234, 15238, 15244, 15250, 15254, 15257, 15265, 15268, 15270, 15282, 15284, 15287, 15292, 15294, 15295, 15297, 15298, 15300, 15301, 15302, 15304, 15305, 15307, 15312, 15379, 15380, 15382, 15383, 15384, 15385, 15396, 15397, 15398, 15400, 15402, 15403, 15437, 15455, 15456, 15457, 15462, 15463, 15465, 15467, 15537, 15539, 15540, 15541, 15542, 15543, 15544, 15545, 15547, 15548, 15549, 15551, 15553, 15554, 15558, 15559, 15562, 15564, 15565, 15566, 15567, 15569, 15570, 15572, 15577, 15580, 15581, 15582, 15583, 15584, 15587, 15589, 15590, 15594, 15598, 15600, 15610, 15615, 15616, 15617, 15618, 15619, 15622, 15623, 15625, 15627, 15628, 15629, 15630, 15631, 15632, 15634, 15637, 15641, 15642, 15646, 15648, 15653, 15654, 15657, 15658, 15663, 15664, 15666, 15669, 15674, 15675, 15676, 15678, 15679, 15680, 15681, 15685, 15688, 15691, 15698, 15700, 15704, 15705, 15706, 15714, 15716, 15722, 15723, 15728, 15729, 15733, 15734, 15735, 15744, 15745, 15746, 15747, 15748, 15750, 15751, 15752, 15758, 15760, 15761, 15765, 15766, 15767, 15770, 15771, 15774, 15786, 15795, 15796, 15797, 15798, 15800, 15801, 15816, 15824, 15828, 15830, 15831, 15832, 15835, 15836, 15837, 15838, 15844, 15848, 15849, 15852, 15856, 15858, 15859, 15861, 15864, 15865, 15866, 15868, 15869, 15872, 15877, 15880, 15881, 15882, 15891, 15892, 15895, 15896, 15899, 15902, 15905, 15908, 15911, 15921, 15927, 15928, 15929, 15954, 15965, 15977, 15994, 16001, 16005, 16007, 16011, 16025, 16026, 16032, 16033, 16036, 16039, 16042, 16043, 16253, 16254, 16257, 16259, 16261, 16264, 16265, 16266, 16271, 16285, 16286, 16288, 16298, 16304, 16306, 16315, 16319, 16320, 16321, 16322, 16323, 16325, 16327, 16328, 16329, 16330, 16331, 16332, 16333, 16335, 16336, 16337, 16338, 16339, 16340, 16341, 16343, 16344, 16347, 16348, 16349, 16350, 16351, 16352, 16355, 16356, 16358, 16359, 16360, 16366, 16369, 16370, 16371, 16372, 16373, 16374, 16375, 16376, 16377, 16379, 16380, 16382, 16386, 16387, 16389, 16390, 16394, 16400, 16410, 16412, 16413, 16414, 16416, 16417, 16418, 16420, 16421, 16422, 16423, 16424, 16426, 16445, 16446, 16447, 16450, 16464, 16467, 16468, 16469, 16470, 16472, 16473, 16475, 16477, 16478, 16479, 16480, 16481, 16482, 16483, 16484, 16485, 16487, 16488, 16489, 16490, 16508, 16509, 16510, 16511, 16512, 16513, 16514, 16515, 16516, 16517, 16518, 16520, 16521, 16522, 16566, 16569, 16570, 16571, 16572, 16573, 16574, 16575, 16578, 16579, 16581, 16583, 16585, 16586, 16587, 16589, 16590, 16591, 16592, 16593, 16595, 16596, 16597, 16598, 16599, 16600, 16602, 16603, 16610, 16612, 16613, 16614, 16615, 16617, 16618, 16619, 16620, 16622, 16625, 16626, 16627, 16628, 16629, 16631, 16633, 16636, 16637, 16638, 16640, 16641, 16642, 16643, 16644, 16646, 16647, 16654, 16655, 16660, 16692, 16699, 16701, 16702, 16706, 17050, 17051, 17054, 17056, 17057, 17058, 17059, 17060, 17061, 17062, 17063, 17064, 17065, 17066, 17067, 17068, 17070, 17071, 17072, 17073, 17074, 17075, 17077, 17078, 17079, 17080, 17081, 17082, 17083, 17084, 17085, 17089, 17090, 17091, 17092, 17093, 17094, 17095, 17096, 17097, 17098, 17099, 17100, 17101, 17102, 17103, 17104, 17105, 17106, 17107, 17109, 17110, 17113, 17115, 17116, 17117, 17118, 17119, 17121, 17122, 17124, 17125, 17126, 17127, 17128, 17129, 17130, 17131, 17133, 17135, 17136, 17141, 17143, 17144, 17145, 17146, 17147, 17148, 17149, 17150, 17152, 17153, 17155, 17157, 17158, 17160, 17161, 17170, 17173, 17174, 17177, 17178, 17179, 17180, 17181, 17183, 17184, 17185, 17186, 17187, 17189, 17192, 17195, 17197, 17198, 17199, 17200, 17201, 17203, 17204, 17206, 17207, 17208, 17211, 17212, 17213, 17214, 17215, 17216, 17217, 17218, 17219, 17220, 17221, 17222, 17223, 17226, 17228, 17229, 17230, 17231, 17232, 17233, 17234, 17235, 17236, 17237, 17238, 17239, 17240, 17244, 17257, 17258, 17259, 17260, 17261, 17262, 17263, 17264, 17265, 17266, 17268, 17269, 17273, 17274, 17275, 17276, 17277, 17278, 17279, 17280, 17281, 17284, 17286, 17289, 17290, 17291, 17292, 17294, 17297, 17299, 17300, 17303, 17304, 17305, 17307, 17308, 17310, 17311, 17313, 17315, 17317, 17318, 17319, 17320, 17321, 17326, 17332, 17334, 17335, 17336, 17338, 17339, 17341, 17342, 17343, 17344, 17345, 17347, 17348, 17349, 17350, 17352, 17354, 17356, 17360, 17363, 17364, 17366, 17368, 17369, 17371, 17372, 17373, 17374, 17375, 17376, 17379, 17380, 17381, 17382, 17383, 17384, 17385, 17387, 17388, 17389, 17390, 17391, 17392, 17393, 17394, 17395, 17397, 17398, 17399, 17400, 17402, 17404, 17405, 17406, 17407, 17408, 17409, 17410, 17411, 17412, 17413, 17414, 17416, 17417, 17418, 17419, 17420, 17421, 17423, 17424, 17425, 17429, 17430, 17432, 17433, 17434, 17435, 17440, 17441, 17442, 17443, 17444, 17445, 17446, 17449, 17452, 17453, 17454, 17456, 17457, 17458, 17459, 17460, 17461, 17462, 17464, 17465, 17469, 17473, 17474, 17475, 17476, 17477, 17478, 17481, 17483, 17484, 17485, 17486, 17487, 17490, 17491, 17492, 17495, 17496, 17497, 17498, 17499, 17500, 17501, 17502, 17503, 17504, 17505, 17506, 17509, 17510, 17513, 17514, 17515, 17518, 17519, 17528, 17532, 17534, 17535, 17536, 17537, 17538, 17540, 17541, 17543, 17544, 17545, 17546, 17547, 17548, 17551, 17552, 17554, 17555, 17557, 17558, 17559, 17560, 17561, 17564, 17565, 17567, 17570, 17571, 17572, 17573, 17574, 17575, 17576, 17578, 17579, 17580, 17581, 17582, 17583, 17584, 17585, 17586, 17587, 17588, 17589, 17590, 17591, 17592, 17593, 17594, 17596, 17599, 17601, 17602, 17606, 17608, 17609, 17610, 17611, 17612, 17615, 17616, 17617, 17618, 17619, 17620, 17630, 17632, 17633, 17634, 17635, 17636, 17637, 17638, 17639, 17640, 17641, 17642, 17643, 17645, 17646, 17647, 17648, 17649, 17650, 17651, 17652, 17658, 17659, 17660, 17661, 17662, 17663, 17664, 17665, 17666, 17667, 17668, 17678, 17679, 17680, 17692, 17693, 17700, 17705, 17706, 17711, 17713, 17715, 17716, 17723, 17726, 17727, 17728, 17729, 17730, 17731, 17732, 17736, 17738, 17741, 17752, 17763, 17764, 17765, 17766];
-	for (var i = 0; i < ID.length; i++) {
-		var optn = ID[i];
-		var el = document.createElement('option');
-		el.textContent = optn;
-		el.value = optn;
-		select.appendChild(el);
-	}
-	document.getElementById('playerImageID').value = '369';
-}
+function drawCard(change) {
+    var card = document.getElementById('card');
+    var ctx = card.getContext('2d');
 
-function playerImage() {
-	if (document.getElementById('playerImageID').value == 'Upload Image') {
-		document.getElementById('uploadButton').style.display = '';
-	} else {
-		document.getElementById('uploadButton').style.display = 'none';
-		document.getElementById('playerImage').src = 'assets/playerphotos/' + document.getElementById('playerImageID').value + '.webp';
-	}
-}
+    ctx.clearRect(0, 0, ctx.width, ctx.height);
 
-function cardType() {
-	switch (document.getElementById('cardType').value) {
-		case 'legendary':
-			document.getElementById('topLeft').style.borderColor = '#e0c059 transparent transparent transparent';
-			document.getElementById('bottomRight').style.borderColor = 'transparent transparent #edd665 transparent';
-			document.getElementById('ratingCircle').style.background = '#edd865';
-			document.getElementById('ratingCircle2').style.background = '#e0c559';
-			break;
-		case 'rare':
-			document.getElementById('topLeft').style.borderColor = '#60ade1 transparent transparent transparent';
-			document.getElementById('bottomRight').style.borderColor = 'transparent transparent #6dc2fa transparent';
-			document.getElementById('ratingCircle').style.background = '#6dc2fa';
-			document.getElementById('ratingCircle2').style.background = '#60ade1';
-			break;
-		case 'common':
-			document.getElementById('topLeft').style.borderColor = '#e1e1e1 transparent transparent transparent';
-			document.getElementById('bottomRight').style.borderColor = 'transparent transparent #ffffff transparent';
-			document.getElementById('ratingCircle').style.background = '#ffffff';
-			document.getElementById('ratingCircle2').style.background = '#e1e1e1';
-			break;
-	}
-}
+    var template = new Image();
+    var positionImage = new Image();
+    var footImage = new Image();
 
-function position() {
-	document.getElementById('positionText').textContent = document.getElementById('position').value;
-	switch (document.getElementById('position').value) {
-		case 'CF':
-		case 'WF':
-			document.getElementById('positionRect').style.background = '#d34e48';
-			break;
-		case 'LM':
-		case 'CM':
-		case 'RM':
-		case 'AM':
-		case 'DM':
-			document.getElementById('positionRect').style.background = '#e9e15c';
-			break;
-		case 'LB':
-		case 'CB':
-		case 'RB':
-			document.getElementById('positionRect').style.background = '#b9e35e';
-			break;
-		case 'GK':
-			document.getElementById('positionRect').style.background = '#7ebde3';
-			break;
-	}
-	if (document.getElementById('position').value == 'GK') {
-		document.getElementById('statsText3').textContent = 'CON';
-		document.getElementById('statsText4').textContent = 'STR';
-		document.getElementById('statsText5').textContent = 'TAC';
-		document.getElementById('statsText6').textContent = 'PAS';
-		document.getElementById('statsText7').textContent = 'GKH';
-		document.getElementById('statsText8').textContent = 'GKR';
-	} else {
-		document.getElementById('statsText3').textContent = 'STA';
-		document.getElementById('statsText4').textContent = 'CON';
-		document.getElementById('statsText5').textContent = 'STR';
-		document.getElementById('statsText6').textContent = 'TAC';
-		document.getElementById('statsText7').textContent = 'PAS';
-		document.getElementById('statsText8').textContent = 'SHO';
-	}
-}
+    template.onload = function () {
+        positionImage.onload = function () {
+            ctx.drawImage(positionImage, 202, 87);
+            if (change === true) {
+                if (document.getElementById('fileUpload').value != '') {
+                    var file = document.getElementById('fileUpload').files[0];
+                    var reader = new FileReader();
+                    reader.onloadend = function () {
+                        uploaded = reader.result;
+                        upload.src = uploaded;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            } else {
+                upload.src = uploaded;
+            }
+        };
+        footImage.onload = function () {
+            ctx.drawImage(footImage, 365, 25);
+        };
 
-function playerName() {
-	document.getElementById('lastNameText').textContent = document.getElementById('lastName').value;
-	document.getElementById('firstNameText').textContent = document.getElementById('firstName').value;
-}
+        positionImage.src = `./assets/position/${value('position')}.png`
+        footImage.src = `./assets/foot/${value('cardType')}/${value('footColor')}.png`
 
-function stats(statsID) {
-	document.getElementById('statsData' + statsID).textContent = document.getElementById('stats' + statsID).value;
-	if (document.getElementById('stats' + statsID).value <= 0) {
-		document.getElementById('statsData' + statsID).textContent = 1;
-		document.getElementById('stats' + statsID).value = '';
-        document.getElementById('statsData' + statsID).style.color = '#d9342b';
-	} else if (document.getElementById('stats' + statsID).value > 100) {
-		document.getElementById('statsData' + statsID).textContent = 100;
-		document.getElementById('stats' + statsID).value = 100;
-	}
-	if (document.getElementById('stats' + statsID).value > 0 && document.getElementById('stats' + statsID).value <= 59) {
-		document.getElementById('statsData' + statsID).style.color = '#d9342b';
-	} else if (document.getElementById('stats' + statsID).value >= 60 && document.getElementById('stats' + statsID).value <= 69) {
-		document.getElementById('statsData' + statsID).style.color = '#e08835';
-	} else if (document.getElementById('stats' + statsID).value >= 70 && document.getElementById('stats' + statsID).value <= 79) {
-		document.getElementById('statsData' + statsID).style.color = '#eadc4c';
-	} else if (document.getElementById('stats' + statsID).value >= 80 && document.getElementById('stats' + statsID).value <= 89) {
-		document.getElementById('statsData' + statsID).style.color = '#5fca3d';
-	} else if (document.getElementById('stats' + statsID).value >= 90 && document.getElementById('stats' + statsID).value <= 100) {
-		document.getElementById('statsData' + statsID).style.color = '#18d4c9';
-	}
-	if (document.getElementById('stats' + statsID).value == 100) {
-		document.getElementById('statsData' + statsID).style.transform = 'scale(0.9, 1)';
-	} else {
-		document.getElementById('statsData' + statsID).style.transform = 'scale(1, 1)';
-	}
-}
+        var upload = new Image();
+        upload.onload = function () {
+            // Uploaded Image
+            ctx.drawImage(upload, 18, 32, 224, 224);
+        };
 
-function rating() {
-	var ratingValue = document.getElementById('rating').value;
-	if (ratingValue <= 0) {
-		ratingValue = 1;
-		document.getElementById('rating').value = '';
-	} else if (ratingValue > 100) {
-		ratingValue = 100;
-		document.getElementById('rating').value = 100;
-	}
-	document.getElementById('ratingText').textContent = ratingValue;
-	if (ratingValue > 0 && ratingValue <= 59) {
-		document.getElementById('ratingCircle3').style.background = '#c6534e';
-	} else if (ratingValue >= 60 && ratingValue <= 69) {
-		document.getElementById('ratingCircle3').style.background = '#de8833';
-	} else if (ratingValue >= 70 && ratingValue <= 79) {
-		document.getElementById('ratingCircle3').style.background = '#eed94a';
-	} else if (ratingValue >= 80 && ratingValue <= 100) {
-		document.getElementById('ratingCircle3').style.background = '#62d041';
-	}
-}
+        // Card Template
+        ctx.drawImage(template, 0, 0);
+
+        /**
+        // Nationality
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(202, 123, 46, 29);
+        **/
+
+        // First Name
+        ctx.textAlign = 'center'
+        ctx.fillStyle = '#777a85';
+        ctx.font = '16px Renogare';
+        ctx.fillText(value('firstName'), 130, 277);
+
+        // Last Name
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '25px Renogare';
+        ctx.fillText(value('lastName'), 130, 301);
+
+        // Stats
+        ctx.font = '22px Renogare';
+        var coordinates = [[335, 103], [335, 150], [335, 197], [335, 243], [434, 103], [434, 150], [434, 197], [434, 243]];
+        for (var i = 1; i < 9; i++) {
+            if (value(`stats${i}`) > 0 && value(`stats${i}`) <= 59) {
+                ctx.fillStyle = '#d9342b';
+            } else if (value(`stats${i}`) > 59 && value(`stats${i}`) <= 69) {
+                ctx.fillStyle = '#e08835';
+            } else if (value(`stats${i}`) > 69 && value(`stats${i}`) <= 79) {
+                ctx.fillStyle = '#eadd4c';
+            } else if (value(`stats${i}`) > 79 && value(`stats${i}`) <= 89) {
+                ctx.fillStyle = '#5eca3d';
+            } else if (value(`stats${i}`) > 89 && value(`stats${i}`) <= 100) {
+                ctx.fillStyle = '#62d0c7';
+            }
+
+            if (value(`stats${i}`) == 100) {
+                ctx.save();
+                ctx.translate(coordinates[i - 1][0], coordinates[i - 1][1]);
+                ctx.save();
+                ctx.scale(0.85, 1);
+                ctx.fillText(value(`stats${i}`), 0, 0);
+                ctx.restore();
+                ctx.restore();
+            } else {
+                ctx.fillText(value(`stats${i}`), coordinates[i - 1][0], coordinates[i - 1][1]);
+            }
+        }
+
+        /**
+        if (value('cardType') == 'legendary') {
+            ctx.beginPath();
+            ctx.arc(222, 41, 41, 0, 2 * Math.PI);
+            ctx.fillStyle = '#edd965';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(222, 41, 37, 0, 2 * Math.PI);
+            ctx.fillStyle = '#e0c159';
+            ctx.fill();
+        } else if (value('cardType') == 'rare') {
+            ctx.beginPath();
+            ctx.arc(222, 41, 41, 0, 2 * Math.PI);
+            ctx.fillStyle = '#6dc2fa';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(222, 41, 37, 0, 2 * Math.PI);
+            ctx.fillStyle = '#60ade1';
+            ctx.fill();
+        } else if (value('cardType') == 'common') {
+            ctx.beginPath();
+            ctx.arc(222, 41, 41, 0, 2 * Math.PI);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(222, 41, 37, 0, 2 * Math.PI);
+            ctx.fillStyle = '#e1e1e1';
+            ctx.fill();
+        }
+        */
+
+        // Rating Circle
+        ctx.beginPath();
+        ctx.arc(222, 41, 31, 0, 2 * Math.PI);
+        if (value('rating') > 0 && value('rating') <= 59) {
+            ctx.fillStyle = '#d0504b';
+        } else if (value('rating') > 59 && value('rating') <= 69) {
+            ctx.fillStyle = '#de8735';
+        } else if (value('rating') > 69 && value('rating') <= 79) {
+            ctx.fillStyle = '#eed94a';
+        } else if (value('rating') > 79 && value('rating') <= 89) {
+            ctx.fillStyle = '#63d041';
+        } else if (value('rating') > 89 && value('rating') <= 100) {
+            ctx.fillStyle = '#5697cd';
+        }
+        ctx.fill();
+
+        // Rating
+        ctx.fillStyle = '#1d2234';
+        ctx.font = '28px Renogare';
+        ctx.fillText(value('rating'), 222, 52);
+
+        // Height
+        ctx.textAlign = 'left'
+        ctx.fillStyle = '#1d2234';
+        ctx.font = '23px Renogare';
+        ctx.fillText(value('height'), 304, 56);
+
+        // Foot
+        ctx.fillText(value('foot'), 414, 56);
+    };
+
+    // Card Type
+    if (value('position') == 'GK') {
+        template.src = `./assets/card/${value('cardType')}GK.png`;
+    } else {
+        template.src = `./assets/card/${value('cardType')}.png`;
+    }
+};
